@@ -668,25 +668,29 @@ export default function CollaborativeCanvas() {
         </div>
       </div>
 
-      {/* Floating Center Control Dock */}
+      {/* Floating Center Control Dock (Horizontal Scrollable for Split Screens) */}
       <div style={{
         position: 'absolute',
-        bottom: 24,
+        bottom: 16,
         left: '50%',
         transform: 'translateX(-50%)',
         background: 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(16px)',
         border: '1px solid #e2e8f0',
-        padding: '8px 16px',
+        padding: '8px 14px',
         borderRadius: '16px',
         boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05)',
         display: 'flex',
         alignItems: 'center',
-        gap: '12px',
-        zIndex: 20
+        gap: '10px',
+        zIndex: 20,
+        maxWidth: '94vw',
+        overflowX: 'auto',
+        whiteSpace: 'nowrap',
+        WebkitOverflowScrolling: 'touch'
       }}>
         {/* Variety Tools */}
-        <div style={{ display: 'flex', gap: '3px' }}>
+        <div style={{ display: 'flex', gap: '3px', flexShrink: 0 }}>
           {[
             { id: 'pen', icon: <Pencil size={17} />, label: 'Fine Gel Pen' },
             { id: 'brush', icon: <Paintbrush size={17} />, label: 'Calligraphy Brush' },
@@ -723,8 +727,8 @@ export default function CollaborativeCanvas() {
         {/* Fill Mode Switcher for Shapes */}
         {(tool === 'rect' || tool === 'circle') && (
           <>
-            <span style={{ height: '22px', width: '1px', background: '#e2e8f0' }} />
-            <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+            <span style={{ height: '22px', width: '1px', background: '#e2e8f0', flexShrink: 0 }} />
+            <div style={{ display: 'flex', gap: '3px', alignItems: 'center', flexShrink: 0 }}>
               {['none', 'translucent', 'solid'].map((m) => (
                 <button
                   key={m}
@@ -747,11 +751,11 @@ export default function CollaborativeCanvas() {
           </>
         )}
 
-        <span style={{ height: '22px', width: '1px', background: '#e2e8f0' }} />
+        <span style={{ height: '22px', width: '1px', background: '#e2e8f0', flexShrink: 0 }} />
 
         {/* Eraser Sizing OR Palette */}
         {tool === 'eraser' ? (
-          <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '4px', alignItems: 'center', flexShrink: 0 }}>
             <span style={{ fontSize: '11px', color: '#64748b', fontWeight: 600, marginRight: '4px' }}>Eraser:</span>
             {ERASER_SIZES.map((item) => (
               <button
@@ -773,7 +777,7 @@ export default function CollaborativeCanvas() {
             ))}
           </div>
         ) : (
-          <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '5px', alignItems: 'center', flexShrink: 0 }}>
             {PALETTE.map((c) => (
               <button
                 key={c}
@@ -806,12 +810,12 @@ export default function CollaborativeCanvas() {
           </div>
         )}
 
-        <span style={{ height: '22px', width: '1px', background: '#e2e8f0' }} />
+        <span style={{ height: '22px', width: '1px', background: '#e2e8f0', flexShrink: 0 }} />
 
         {/* Stroke Thickness */}
         {tool !== 'eraser' && (
           <>
-            <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '4px', alignItems: 'center', flexShrink: 0 }}>
               {PEN_WIDTHS.map((w) => (
                 <button
                   key={w}
@@ -832,12 +836,12 @@ export default function CollaborativeCanvas() {
                 </button>
               ))}
             </div>
-            <span style={{ height: '22px', width: '1px', background: '#e2e8f0' }} />
+            <span style={{ height: '22px', width: '1px', background: '#e2e8f0', flexShrink: 0 }} />
           </>
         )}
 
         {/* Utility Actions */}
-        <div style={{ display: 'flex', gap: '4px' }}>
+        <div style={{ display: 'flex', gap: '4px', flexShrink: 0 }}>
           <button onClick={undo} title="Undo" style={actionBtnStyle}><Undo2 size={16} /></button>
           <button onClick={redo} title="Redo" style={actionBtnStyle}><Redo2 size={16} /></button>
           <button onClick={clearBoard} title="Clear Board" style={actionBtnStyle}><Trash2 size={16} color="#ef4444" /></button>

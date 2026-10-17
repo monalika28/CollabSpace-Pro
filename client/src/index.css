@@ -11,3 +11,18 @@ body, html, #root {
   user-select: none;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
+/* Sleek Horizontal Scrollbar for Floating Dock */
+div::-webkit-scrollbar {
+  height: 5px;
+}
+div::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.8);
+  border-radius: 10px;
+}
+div::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+div::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
