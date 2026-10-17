@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  sync-server:
+    build: ./server
+    ports:
+      - "1234:1234"
+    environment:
+      - PORT=1234
+    restart: always
